@@ -187,31 +187,37 @@ def run_train(cfg, hp):
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode='min', factor=0.5, patience=3)
 
-    train_losses, val_losses, val_accs = [], [], []
+    train_losses, train_accs, val_losses, val_accs = [], [], [], []
 
     for epoch in range(epochs):
         model.train()
         epoch_loss = 0.0
+        epoch_correct = 0
         for bat, bwl, num, lbl in train_loader:
             bat, bwl, num, lbl = (bat.to(device), bwl.to(device),
                                    num.to(device), lbl.to(device))
             optimizer.zero_grad(set_to_none=True)
-            loss = criterion(model(bat, bwl, num), lbl)
+            logits = model(bat, bwl, num)
+            loss = criterion(logits, lbl)
             loss.backward()
             optimizer.step()
             epoch_loss += loss.item() * len(lbl)
+            with torch.no_grad():
+                epoch_correct += ((torch.sigmoid(logits) >= 0.5).float() == lbl).sum().item()
 
         train_loss = epoch_loss / len(train_loader.dataset)
+        train_acc  = epoch_correct / len(train_loader.dataset)
         val_loss, val_acc = eval_loop(model, eval_loader, criterion, device)
         scheduler.step(val_loss)
 
         train_losses.append(train_loss)
+        train_accs.append(train_acc)
         val_losses.append(val_loss)
         val_accs.append(val_acc)
 
         print(f"Epoch {epoch+1:02d}/{epochs}  "
-              f"loss: {train_loss:.4f}  val_loss: {val_loss:.4f}  "
-              f"val_acc: {val_acc:.4f}  "
+              f"loss: {train_loss:.4f}  acc: {train_acc:.4f}  "
+              f"val_loss: {val_loss:.4f}  val_acc: {val_acc:.4f}  "
               f"lr: {optimizer.param_groups[0]['lr']:.6f}",
               file=sys.stderr)
 
@@ -232,16 +238,25 @@ def run_train(cfg, hp):
         json.dump({
             'hyperparams': {k: v for k, v in hp.items() if k != 'metadata'},
             'train_losses': train_losses,
+            'train_accs': train_accs,
             'val_losses': val_losses,
             'val_accs': val_accs,
             'final_train_loss': train_losses[-1],
+            'final_train_acc': train_accs[-1],
             'final_val_loss': val_losses[-1],
             'final_val_acc': val_accs[-1],
+            'train_eval_gap': train_accs[-1] - val_accs[-1],
             'epochs_run': epochs,
         }, f, indent=2)
 
     # ── EPOCH-required JSON metrics to stdout ──────────────────────────────────
-    print(json.dumps({'accuracy': val_accs[-1], 'loss': val_losses[-1]}))
+    print(json.dumps({
+        'accuracy': val_accs[-1],
+        'loss': val_losses[-1],
+        'train_accuracy': train_accs[-1],
+        'train_loss': train_losses[-1],
+        'train_eval_gap': train_accs[-1] - val_accs[-1],
+    }))
 
 
 # ── Eval mode ──────────────────────────────────────────────────────────────────
