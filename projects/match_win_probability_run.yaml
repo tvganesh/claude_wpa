@@ -1,0 +1,56 @@
+project:
+  name: "Match Win Probability"
+  slug: match_win_probability
+
+run:
+  id: null
+  goal: "Fine-tune CricketModel hyperparameters to push accuracy from 0.89 to 0.95 on full T20 dataset"
+  task_type: finetune
+  max_rounds: 3
+  max_retries_per_round: 1
+
+env:
+  manager: uv
+  path: "projects/match_win_probability"
+
+evaluation:
+  primary_metric: accuracy
+  min_delta: 0.01
+  deterministic: true
+  train_cmd: "python projects/match_win_probability/evaluate.py train"
+  eval_cmd: "python projects/match_win_probability/evaluate.py eval"
+
+ml:
+  base_model: CricketModel
+  framework: pytorch
+  device: auto          # auto-detects: cuda -> mps -> cpu
+  source: pytorch-deeplearning.py
+
+seed: 42
+
+data:
+  source: "output/t20.csv"
+  target_column: isWinner
+  train_split: 0.85     # 85% train, 15% eval
+
+# Fixed hyperparameters (not tunable by EPOCH — read directly by evaluate.py)
+hyperparameters:
+  batch_size: 1024
+  hidden_layers: [64, 32, 16, 8]
+
+# Tunable search space — EPOCH may only modify parameters listed here
+# [a, b] with 2 numeric values = continuous range [min, max]
+# [a, b, c, ...] with 3+ values or strings = pick one option
+tune:
+  optimizer: [adam, adamw, sgd]
+  learning_rate: [0.0001, 0.05]
+  weight_decay: [0.0, 0.1]
+  dropout: [0.0, 0.4]
+  embedding_dim: [8, 16, 32, 64]
+  epochs: [10, 20, 30, 40]
+
+git:
+  remote: https://github.com/tvganesh/claude_wpa.git
+  push_to_remote: true
+  create_prs: true
+  target_branch: main
