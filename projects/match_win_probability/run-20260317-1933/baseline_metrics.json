@@ -1,0 +1,20 @@
+{
+  "round": 1,
+  "run_id": "run-20260317-1933",
+  "hyperparams": {
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "epochs": 20
+  },
+  "metrics": {
+    "eval_accuracy": 0.8876,
+    "eval_loss": 0.2393,
+    "train_loss": 0.2468,
+    "train_accuracy": null,
+    "train_eval_gap": null,
+    "note": "train_accuracy not tracked in baseline run; added in evaluate.py for round 2+"
+  }
+}
