@@ -4,10 +4,10 @@
   "weight_decay": 0.0,
   "dropout": 0.1,
   "embedding_dim": 16,
-  "epochs": 20,
+  "epochs": 40,
   "metadata": {
-    "last_updated_round": 1,
-    "updated_by": "baseline_executor",
-    "reason": "Initial conservative defaults"
+    "last_updated_round": 2,
+    "updated_by": "investigator",
+    "reason": "epochs 20→40: model not converged at epoch 20 (loss still declining, LR never reduced by scheduler)"
   }
 }
