@@ -4,10 +4,10 @@
   "weight_decay": 0.0,
   "dropout": 0.1,
   "embedding_dim": 128,
-  "epochs": 100,
+  "epochs": 150,
   "metadata": {
-    "last_updated_round": 1,
-    "updated_by": "baseline_executor",
-    "reason": "Run 3 baseline: emb=128, ep=100, lr=0.01. LR scheduler fired at ep76 in run-2 with only 4 epochs to benefit. 100 epochs gives ~24 epochs after first firing (~ep76) to converge at reduced LR."
+    "last_updated_round": 2,
+    "updated_by": "executor",
+    "reason": "Round 2 retry: ep=100 gave 0.9419 (+0.005 vs baseline 0.9369, below min_delta 0.01). Second LR drop (lr->0.0025) was just starting at ep95-100, causing plateau. ep=150 gives ~50 more epochs after plateau to fully exploit second drop."
   }
 }

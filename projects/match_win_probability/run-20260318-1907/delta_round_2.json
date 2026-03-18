@@ -1,0 +1,23 @@
+{
+  "round": 2,
+  "run_id": "run-20260318-1907",
+  "decision": "REJECT",
+  "hypothesis": "ep=100 gives ~24 epochs after LR scheduler fires (~ep71) to converge at lr=0.005",
+  "hyperparams_proposed": {
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "embedding_dim": 128,
+    "epochs": 100
+  },
+  "metrics": {
+    "baseline_eval_accuracy": 0.9369,
+    "proposed_eval_accuracy": 0.9419,
+    "delta": 0.005,
+    "threshold": 0.01,
+    "status": "BELOW_THRESHOLD"
+  },
+  "root_cause": "LR scheduler fired at ~ep71. Model gained +0.005 from ep71→100 but plateaued around 0.9419-0.9420. Second LR drop (lr→0.0025) was just starting at ep95-100 when training ended.",
+  "retry_strategy": "epochs=150 — gives ~50 more epochs after current plateau, allowing second LR drop to fully propagate. Expected additional gain: +0.005 to push past threshold 0.9469."
+}
