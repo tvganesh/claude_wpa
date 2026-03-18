@@ -3,11 +3,11 @@
   "learning_rate": 0.01,
   "weight_decay": 0.0,
   "dropout": 0.1,
-  "embedding_dim": 32,
+  "embedding_dim": 64,
   "epochs": 40,
   "metadata": {
-    "last_updated_round": 2,
+    "last_updated_round": 3,
     "updated_by": "investigator",
-    "reason": "Round 2 retry: embedding_dim 16→32. More capacity for 7784 batsmen + 5741 bowlers. epochs kept at 40 (max). Previous attempt (epochs 20→40) gained only +0.0061 < min_delta 0.01."
+    "reason": "embedding_dim 32→64: Round 2 showed 16→32 gave +2.81% (no overfitting, gap=-0.0049). Same capacity logic applies for 7784 batsmen + 5741 bowlers."
   }
 }
