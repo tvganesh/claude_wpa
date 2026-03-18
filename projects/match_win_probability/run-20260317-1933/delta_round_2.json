@@ -1,0 +1,26 @@
+{
+  "round": 2,
+  "retry_count": 0,
+  "change": "epochs: 20 → 40",
+  "baseline_metrics": {
+    "eval_accuracy": 0.8876,
+    "eval_loss": 0.2393,
+    "train_accuracy": null,
+    "train_loss": 0.2468,
+    "train_eval_gap": null
+  },
+  "proposed_metrics": {
+    "eval_accuracy": 0.8937,
+    "eval_loss": 0.2257,
+    "train_accuracy": 0.8901,
+    "train_loss": 0.2341,
+    "train_eval_gap": -0.0036
+  },
+  "deltas": {
+    "eval_accuracy": 0.0061,
+    "eval_loss": -0.0136,
+    "train_eval_gap": -0.0036
+  },
+  "verdict": "REJECT",
+  "rationale": "eval_accuracy +0.0061 < min_delta 0.01. No overfitting (gap=-0.0036). Model at max epochs=40, LR never reduced. Retry with embedding_dim 16→32 for more capacity."
+}
