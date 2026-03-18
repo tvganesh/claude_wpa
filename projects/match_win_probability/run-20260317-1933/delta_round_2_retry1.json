@@ -1,0 +1,24 @@
+{
+  "round": 2,
+  "retry_count": 1,
+  "change": "embedding_dim: 16 → 32, epochs: 40",
+  "baseline_metrics": {
+    "eval_accuracy": 0.8876,
+    "eval_loss": 0.2393,
+    "train_loss": 0.2468
+  },
+  "proposed_metrics": {
+    "eval_accuracy": 0.9157,
+    "eval_loss": 0.1904,
+    "train_accuracy": 0.9108,
+    "train_loss": 0.1991,
+    "train_eval_gap": -0.0049
+  },
+  "deltas": {
+    "eval_accuracy": 0.0281,
+    "eval_loss": -0.0489,
+    "train_eval_gap": -0.0049
+  },
+  "verdict": "ACCEPT",
+  "rationale": "eval_accuracy +0.0281 >> min_delta 0.01. No overfitting (gap=-0.0049). Doubling embedding_dim from 16→32 unlocked major capacity gain for 7784 batsmen + 5741 bowlers."
+}
