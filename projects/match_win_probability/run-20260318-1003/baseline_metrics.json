@@ -1,0 +1,20 @@
+{
+  "round": 1,
+  "run_id": "run-20260318-1003",
+  "note": "Baseline carried forward from run-20260317-1933 Round 3 (no re-run needed)",
+  "hyperparams": {
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "embedding_dim": 64,
+    "epochs": 40
+  },
+  "metrics": {
+    "eval_accuracy": 0.9297,
+    "eval_loss": 0.1656,
+    "train_accuracy": 0.9236,
+    "train_loss": 0.1747,
+    "train_eval_gap": -0.0061
+  }
+}
