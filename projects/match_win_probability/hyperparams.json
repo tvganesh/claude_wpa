@@ -3,11 +3,11 @@
   "learning_rate": 0.01,
   "weight_decay": 0.0,
   "dropout": 0.1,
-  "embedding_dim": 64,
-  "epochs": 40,
+  "embedding_dim": 128,
+  "epochs": 80,
   "metadata": {
     "last_updated_round": 3,
     "updated_by": "investigator",
-    "reason": "embedding_dim 32→64: Round 2 showed 16→32 gave +2.81% (no overfitting, gap=-0.0049). Same capacity logic applies for 7784 batsmen + 5741 bowlers."
+    "reason": "epochs 60→80: LR scheduler fired at ep42 in Round 2 retry (0.01→0.005) giving +0.006 jump. With 80 epochs, scheduler should fire a second time (0.005→0.0025) for another boost. emb=128 kept."
   }
 }
