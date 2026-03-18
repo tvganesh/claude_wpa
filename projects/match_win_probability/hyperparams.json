@@ -3,11 +3,11 @@
   "learning_rate": 0.01,
   "weight_decay": 0.0,
   "dropout": 0.1,
-  "embedding_dim": 64,
-  "epochs": 40,
+  "embedding_dim": 128,
+  "epochs": 100,
   "metadata": {
-    "last_updated_round": 3,
-    "updated_by": "investigator",
-    "reason": "embedding_dim 32→64: Round 2 showed 16→32 gave +2.81% (no overfitting, gap=-0.0049). Same capacity logic applies for 7784 batsmen + 5741 bowlers."
+    "last_updated_round": 1,
+    "updated_by": "baseline_executor",
+    "reason": "Run 3 baseline: emb=128, ep=100, lr=0.01. LR scheduler fired at ep76 in run-2 with only 4 epochs to benefit. 100 epochs gives ~24 epochs after first firing (~ep76) to converge at reduced LR."
   }
 }

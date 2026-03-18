@@ -1,0 +1,21 @@
+{
+  "round": 1,
+  "run_id": "run-20260318-1907",
+  "note": "Baseline carried from best result across all runs (run-20260318-1003 Round 3)",
+  "hyperparams": {
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "embedding_dim": 128,
+    "epochs": 80
+  },
+  "metrics": {
+    "eval_accuracy": 0.9369,
+    "eval_loss": 0.1505,
+    "train_accuracy": 0.9341,
+    "train_loss": 0.1529,
+    "train_eval_gap": -0.0028
+  },
+  "key_finding": "LR scheduler fired at ep76 with only 4 epochs remaining. Round 2 will use epochs=100 to give ~24 epochs after firing."
+}
