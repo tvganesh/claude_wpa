@@ -1,0 +1,26 @@
+{
+  "round": 3,
+  "retry_count": 0,
+  "change": "embedding_dim: 32 → 64, epochs: 40",
+  "baseline_metrics": {
+    "eval_accuracy": 0.9157,
+    "eval_loss": 0.1904,
+    "train_accuracy": 0.9108,
+    "train_loss": 0.1991,
+    "train_eval_gap": -0.0049
+  },
+  "proposed_metrics": {
+    "eval_accuracy": 0.9297,
+    "eval_loss": 0.1656,
+    "train_accuracy": 0.9236,
+    "train_loss": 0.1747,
+    "train_eval_gap": -0.0061
+  },
+  "deltas": {
+    "eval_accuracy": 0.0140,
+    "eval_loss": -0.0248,
+    "train_eval_gap": -0.0012
+  },
+  "verdict": "ACCEPT",
+  "rationale": "eval_accuracy +0.0140 >= min_delta 0.01. No overfitting (gap=-0.0061 < 0.15). Scaling embedding_dim 32→64 continues to unlock capacity for 7784 batsmen + 5741 bowlers."
+}
