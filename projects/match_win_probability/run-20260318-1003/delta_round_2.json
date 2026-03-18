@@ -1,0 +1,25 @@
+{
+  "round": 2,
+  "retry_count": 0,
+  "change": "embedding_dim 64→128, epochs 40→60, learning_rate 0.01→0.001",
+  "baseline_metrics": {
+    "eval_accuracy": 0.9297,
+    "eval_loss": 0.1656,
+    "train_accuracy": 0.9236,
+    "train_loss": 0.1747,
+    "train_eval_gap": -0.0061
+  },
+  "proposed_metrics": {
+    "eval_accuracy": 0.9213,
+    "eval_loss": 0.1843,
+    "train_accuracy": 0.9160,
+    "train_loss": 0.1931,
+    "train_eval_gap": -0.0053
+  },
+  "deltas": {
+    "eval_accuracy": -0.0084,
+    "eval_loss": 0.0187
+  },
+  "verdict": "REJECT",
+  "rationale": "REGRESSION: eval_accuracy -0.0084. lr=0.001 too slow from random init — at ep60, train_loss=0.1931 worse than baseline ep40 train_loss=0.1747 with lr=0.01. Retry: revert lr to 0.01, keep emb=128 and epochs=60."
+}

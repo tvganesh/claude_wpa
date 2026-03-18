@@ -1,6 +1,6 @@
 {
   "optimizer": "adam",
-  "learning_rate": 0.001,
+  "learning_rate": 0.01,
   "weight_decay": 0.0,
   "dropout": 0.1,
   "embedding_dim": 128,
@@ -8,6 +8,6 @@
   "metadata": {
     "last_updated_round": 2,
     "updated_by": "investigator",
-    "reason": "Three complementary changes from 0.9297 baseline: embedding_dim 64→128 (proven scaling), epochs 40→60 (still converging at ep40), learning_rate 0.01→0.001 (finer steps near optimum, LR never reduced in 120 prior epochs)"
+    "reason": "Round 2 retry: revert lr 0.001→0.01 (under-convergence), keep emb=128 and epochs=60. lr=0.001 from random init needs 150+ epochs to converge."
   }
 }
