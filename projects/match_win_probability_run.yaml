@@ -4,7 +4,7 @@ project:
 
 run:
   id: null
-  goal: "Fine-tune CricketModel hyperparameters to push accuracy from 0.89 to 0.95 on full T20 dataset"
+  goal: "Fine-tune CricketModel hyperparameters to push accuracy from 0.9297 to 0.95 on full T20 dataset"
   task_type: finetune
   max_rounds: 3
   max_retries_per_round: 1
@@ -46,8 +46,8 @@ tune:
   learning_rate: [0.0001, 0.05]
   weight_decay: [0.0, 0.1]
   dropout: [0.0, 0.4]
-  embedding_dim: [8, 16, 32, 64]
-  epochs: [10, 20, 30, 40]
+  embedding_dim: [8, 16, 32, 64, 128]   # expanded: 128 added
+  epochs: [10, 20, 30, 40, 60, 80]      # expanded: 60, 80 added
 
 git:
   remote: https://github.com/tvganesh/claude_wpa.git
