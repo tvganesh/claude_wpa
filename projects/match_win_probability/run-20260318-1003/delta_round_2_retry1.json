@@ -1,0 +1,25 @@
+{
+  "round": 2,
+  "retry_count": 1,
+  "change": "embedding_dim=128, epochs=60, lr=0.01 (reverted from 0.001)",
+  "baseline_metrics": {
+    "eval_accuracy": 0.9297,
+    "eval_loss": 0.1656,
+    "train_accuracy": 0.9236,
+    "train_loss": 0.1747,
+    "train_eval_gap": -0.0061
+  },
+  "proposed_metrics": {
+    "eval_accuracy": 0.9352,
+    "eval_loss": 0.1543,
+    "train_accuracy": 0.9315,
+    "train_loss": 0.1590,
+    "train_eval_gap": -0.0037
+  },
+  "deltas": {
+    "eval_accuracy": 0.0055,
+    "eval_loss": -0.0113
+  },
+  "verdict": "REJECT",
+  "rationale": "Improvement +0.0055 < min_delta 0.01. KEY FINDING: LR scheduler fired at epoch 42 (0.01→0.005), val_acc jumped 0.9263→0.9319 in one epoch. Still improving at ep60. Round 3: extend to epochs=80 to let scheduler fire a second time (0.005→0.0025)."
+}
