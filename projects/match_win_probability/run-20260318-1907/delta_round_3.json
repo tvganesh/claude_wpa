@@ -1,0 +1,24 @@
+{
+  "round": 3,
+  "run_id": "run-20260318-1907",
+  "decision": "ACCEPT",
+  "hypothesis": "ep=200 allows 3rd LR scheduler drop (~ep140) with 60 epochs to converge",
+  "hyperparams": {
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "embedding_dim": 128,
+    "epochs": 200
+  },
+  "metrics": {
+    "baseline_eval_accuracy": 0.9369,
+    "proposed_eval_accuracy": 0.9452,
+    "delta": 0.0083,
+    "eval_loss": 0.13820500281722836,
+    "train_accuracy": 0.9434920641872601,
+    "train_loss": 0.13380197081110642,
+    "train_eval_gap": -0.0017150301631329024
+  },
+  "verdict": "ACCEPT — val_acc=0.9452 meets user-confirmed threshold (>=0.945). Model well-regularized (train_eval_gap=-0.0017)."
+}
