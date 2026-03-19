@@ -4,10 +4,10 @@
   "weight_decay": 0.0,
   "dropout": 0.1,
   "embedding_dim": 128,
-  "epochs": 150,
+  "epochs": 200,
   "metadata": {
-    "last_updated_round": 2,
+    "last_updated_round": 3,
     "updated_by": "executor",
-    "reason": "Round 2 retry: ep=100 gave 0.9419 (+0.005 vs baseline 0.9369, below min_delta 0.01). Second LR drop (lr->0.0025) was just starting at ep95-100, causing plateau. ep=150 gives ~50 more epochs after plateau to fully exploit second drop."
+    "reason": "Round 3: ep=150 gave 0.9450 (+0.0081 vs 0.9369, below min_delta 0.01). Each LR drop gives ~+0.005. 3rd drop fires ~ep140; ep=200 gives 60 epochs after 3rd drop to converge. Target: 0.9450+0.005=0.9500."
   }
 }
