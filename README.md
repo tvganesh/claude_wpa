@@ -129,4 +129,4 @@ The training data (`output/t20.csv`, ~139 MB, 2.1M rows) is not included in this
 
 ## Author
 
-**Tinniam V Ganesh** — [tvganesh.wordpress.com](https://tvganesh.wordpress.com)
+**Tinniam V Ganesh** — [tvganesh.wordpress.com](https://gigadom.in/)
